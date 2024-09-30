@@ -33,7 +33,7 @@ export default function Card() {
         setInputCity(e.target.value)
     }
     useEffect(() => {
-        getweatherDetails();
+        getweatherDetails("Attock");
     }, [])
 
     const temperature=((data?.main?.temp) - 273.15).toFixed(2);

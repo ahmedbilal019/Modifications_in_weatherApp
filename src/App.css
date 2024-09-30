@@ -22,7 +22,7 @@
  }
 
  .search-field {
-   width:20vw;
+   width:30vw;
    margin: auto;
    padding: 10px;
    border: none;
@@ -64,7 +64,7 @@
    margin: 10px auto;
    min-width: 300px;
    max-width: 600px;
-   width: 40vw;
+   width: 30vw;
    height: 90vh;
    backdrop-filter: blur(10px);
   
