@@ -1,125 +1,122 @@
- .App {
-   height: 100vh;
-   
-   background:url("https://images.pexels.com/photos/3783385/pexels-photo-3783385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-   background-repeat: no-repeat;
-   background-size:cover;
-   background-position: center;
- }
+.App {
+  height: 100vh;
 
+  background: url("https://images.pexels.com/photos/3783385/pexels-photo-3783385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
- .header {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   margin-left: 10px;
-   margin-right: 10px;
-   position: absolute;
-   top: 18px;
-   left: 50%;
-   right: 50%;
- }
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  right: 50%;
+}
 
- .search-field {
-   width:30vw;
-   margin: auto;
-   padding: 10px;
-   border: none;
-   border-radius: 10px;
-   font-size: 15px;
-   font-weight: 530;
- }
-.searchbtn{
+.search-field {
+  width: 30vw;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 530;
+}
+.searchbtn {
   margin-left: 5px;
   border-radius: 30px;
   border: none;
-
 }
- .searchIcon {
-   width: 25px;
-   height: 25px;
-   margin: auto;
-   font-size: 20px;
- }
+.searchIcon {
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  font-size: 20px;
+}
 
- .App-header {
-   display: flex;
-   flex-direction: row;
-   /* align-items:center ; */
-   justify-content: center;
+.App-header {
+  display: flex;
+  flex-direction: row;
+  /* align-items:center ; */
+  justify-content: center;
+}
 
+.card {
+  border: 1px solid black;
+  box-shadow: 2px 2px 29px 5px rgba(12, 81, 170, 0.89);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 10px auto;
+  min-width: 300px;
+  max-width: 600px;
+  width: 30vw;
+  height: 90vh;
+  backdrop-filter: blur(10px);
+}
 
- }
+.card .city {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 900;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 
- .card {
-   border: 1px solid black;
-   box-shadow: 2px 2px 29px 5px rgba(12, 81, 170, 0.89);
-   border-radius: 7px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   font-size: 20px;
-   margin: 10px auto;
-   min-width: 300px;
-   max-width: 600px;
-   width: 30vw;
-   height: 90vh;
-   backdrop-filter: blur(10px);
-  
- }
+.temp {
+  font-size: 25px;
+  font-weight: 500;
+}
 
- .card .city {
-   font-size: 35px;
-   text-align: center;
-   font-weight:900;
-   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
- }
+.temprature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
- .temp {
-   font-size: 25px;
-   font-weight: 500;
- }
+.weather-logo {
+  width: 100px;
+  height: 100px;
+}
 
- .temprature {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
- }
+figure {
+  width: 100px;
+  margin: 0;
+  /* border-left: 1px solid black; */
+  padding-left: 5px;
+}
 
- .weather-logo {
-   width: 100px;
-   height: 100px;
-
- }
-
- figure {
-   width: 100px;
-   margin: 0;
-   /* border-left: 1px solid black; */
-   padding-left: 5px;
- }
-
- figcaption {
-   text-align: center;
-   font-size: 22px;
-   font-weight: 400;
- }
- .humidity,.windspeed,.pressure{
-  font-weight:600;
+figcaption {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+}
+.humidity,
+.windspeed,
+.pressure {
+  font-weight: 600;
   margin-bottom: 3px;
- }
-@media screen and (max-width:768px) {
+}
+@media screen and (max-width: 768px) {
   .header {
     top: 7px;
   }
-  .card{
+  .card {
     height: 95vh;
   }
   .search-field {
-    width:60vw;
+    width: 60vw;
     font-weight: 530;
   }
 }
