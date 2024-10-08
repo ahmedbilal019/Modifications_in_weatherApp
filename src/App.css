@@ -1,10 +1,27 @@
 .App {
-  height: 100vh;
-
+  height: 110vh;
   background: url("https://images.pexels.com/photos/3783385/pexels-photo-3783385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+#light {
+  background: url("https://images.pexels.com/photos/3783385/pexels-photo-3783385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#dark {
+  background: url("https://images.pexels.com/photos/16915886/pexels-photo-16915886/free-photo-of-star-field-over-the-trees.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: whitesmoke;
+}
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
@@ -45,7 +62,7 @@
   display: flex;
   flex-direction: row;
   /* align-items:center ; */
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .card {
@@ -62,7 +79,7 @@
   max-width: 600px;
   width: 30vw;
   height: 90vh;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
 }
 
 .card .city {
@@ -74,6 +91,7 @@
 }
 
 .temp {
+  text-align: center;
   font-size: 25px;
   font-weight: 500;
 }
@@ -92,7 +110,7 @@
 
 figure {
   width: 100px;
-  margin: 0;
+  margin: auto;
   /* border-left: 1px solid black; */
   padding-left: 5px;
 }
@@ -105,10 +123,14 @@ figcaption {
 .humidity,
 .windspeed,
 .pressure {
+  text-align: center;
   font-weight: 600;
   margin-bottom: 3px;
 }
 @media screen and (max-width: 768px) {
+  .App {
+    height: 110vh;
+  }
   .header {
     top: 7px;
   }

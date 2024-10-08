@@ -1,44 +1,43 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import axios from "axios";
 import searchIcon from "../searchIcon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWeather } from "../weatherSlice"; // Import the async action
 
 export default function Card() {
-  const apiKey = "e8c7123d2f6eb8bf4b3bbb5dfe8347a7";
-  const [data, setData] = useState({});
-  const [cityName, setInputCity] = useState("");
+  const dispatch = useDispatch();
+  const [cityName, setCityName] = useState("");
 
-  const getweatherDetails = (cityName) => {
-    if (!cityName || cityName === "") return;
-    axios
-      .get(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          cityName +
-          "&appid=" +
-          apiKey
-      )
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        alert("City Did not Exist. Please write correct city name.");
-        console.log(err);
-      });
-  };
+  // Get weather data, loading, and error state from Redux store
+  const { data, loading, error } = useSelector((state) => state.weather);
+
+  // Fetch weather data when cityName changes
   const handleSearch = () => {
-    getweatherDetails(cityName);
+    if (cityName) {
+      dispatch(fetchWeather(cityName)); // Dispatch the action to fetch weather
+    }
   };
-  const handlechangeInput = (e) => {
-    setInputCity(e.target.value);
+
+  useEffect(() => {
+    // Fetch default weather for "Attock" on component mount
+    dispatch(fetchWeather("Attock"));
+  }, [dispatch]);
+
+  const handleChangeInput = (e) => {
+    setCityName(e.target.value);
   };
   useEffect(() => {
-    getweatherDetails("Attock");
-  }, []);
+    if (error) {
+      alert("city name not found. please write city name correctly");
+    }
+  }, [error]);
 
-  const temperature = (data?.main?.temp - 273.15).toFixed(2);
-  const weatherIconUrl = data.weather
+  // Data formatting
+  const temperature = data?.main ? (data.main.temp - 273.15).toFixed(2) : null;
+  const weatherIconUrl = data?.weather
     ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
     : null;
+
   return (
     <div className="card">
       <div className="header">
@@ -48,29 +47,33 @@ export default function Card() {
           className="search-field"
           id="search"
           placeholder="Enter City name..."
-          onChange={handlechangeInput}
+          onChange={handleChangeInput}
           value={cityName}
         />
         <button className="searchbtn" onClick={handleSearch}>
-          {" "}
           <img src={searchIcon} alt="Search Icon" className="searchIcon" />
         </button>
       </div>
-      <div className="card-data">
-        <h2 className="city">{data.name}</h2>
-        <div className="temprature">
-          <figure>
-            <img src={weatherIconUrl} alt="icon" className="weather-logo" />
-            <figcaption>{data.weather?.[0]?.description}</figcaption>
-          </figure>
-          <p className="temp">{temperature}&deg;C</p>
+
+      {loading && <p>Loading...</p>}
+
+      {data && (
+        <div className="card-data">
+          <h2 className="city">{data.name}</h2>
+          <div className="temperature">
+            <figure>
+              <img src={weatherIconUrl} alt="icon" className="weather-logo" />
+              <figcaption>{data.weather?.[0]?.description}</figcaption>
+            </figure>
+            <p className="temp">{temperature}&deg;C</p>
+          </div>
+          <div className="moreDetail">
+            <div className="humidity">Humidity: {data.main?.humidity}%</div>
+            <div className="windspeed">Wind Speed: {data.wind?.speed}m/s</div>
+            <div className="pressure">Pressure: {data.main?.pressure} hPa</div>
+          </div>
         </div>
-        <div className="moreDetail">
-          <div className="humidity">Humidity level: {data.main?.humidity}%</div>
-          <div className="windspeed">Wind Speed: {data.wind?.speed}m/s</div>
-          <div className="pressure">Pressure: {data.main?.pressure}hPa</div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
